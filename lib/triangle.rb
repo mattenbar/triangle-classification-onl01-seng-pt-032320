@@ -56,14 +56,12 @@ class Triangle
      begin
        raise TriangleError
       end
-    elsif equilateral?
-      return :equilateral
-
     elsif isosceles?
       return :isosceles
-
     elsif scalene?
       return :scalene
+    elsif equilateral?
+      return :equilateral
     end
   end
 
