@@ -16,7 +16,6 @@ class Triangle
     end
   end
 
-
   def triangle_iniquality?
     if (@base >= @hypotenuse + @height) || (@hypotenuse >= @base + @height) || (@height >= @base + @hypotenuse)
       return true
@@ -27,9 +26,9 @@ class Triangle
 
   def valid?
     if no_sides_or_negative_sides? || triangle_iniquality?
-      return true
-    else
       return false
+    else
+      return true
     end
   end
 
@@ -52,7 +51,7 @@ class Triangle
 
 
   def kind
-    if valid?
+    if !valid?
      begin
        raise TriangleError
       end
