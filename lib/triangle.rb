@@ -16,7 +16,6 @@ class Triangle
     end
   end
 
-
   def triangle_iniquality?
     if (@base >= @hypotenuse + @height) || (@hypotenuse >= @base + @height) || (@height >= @base + @hypotenuse)
       return true
