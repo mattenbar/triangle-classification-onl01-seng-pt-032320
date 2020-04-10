@@ -33,18 +33,36 @@ class Triangle
     end
   end
 
+  def equilateral?
+    @base == @height && @height == @hypotenuse
+      return true
+  end
+
+  def isosceles?
+    if (@base == @height && @height != @hypotenuse) || (@base == @hypotenuse && @hypotenuse != @height) || (@height == @hypotenuse && @height != @base)
+      return true
+    end
+  end
+
+  def scalene?
+    if @base != @height && @height != @hypotenuse && @base != @hypotenuse
+      return true
+    end
+  end
+
+
   def kind
     if valid?
      begin
        raise TriangleError
       end
-    elsif @base == @height && @height == @hypotenuse
+    elsif equilateral?
       return :equilateral
 
-    elsif (@base == @height && @height != @hypotenuse) || (@base == @hypotenuse && @hypotenuse != @height) || (@height == @hypotenuse && @height != @base)
+    elsif isosceles?
       return :isosceles
 
-    else @base != @height && @height != @hypotenuse && @base != @hypotenuse
+    elsif scalene?
       return :scalene
     end
   end
