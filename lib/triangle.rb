@@ -8,12 +8,35 @@ class Triangle
     @hypotenuse = hypotenuse
   end
 
-  def kind
+  def no_sides_or_negative_sides?
     if @base <= 0 || @height <= 0 || @hypotenuse <= 0
-      begin
-        raise TriangleError
-      rescue TriangleError => error
-        puts error.message
+      return true
+    else
+      return false
+    end
+  end
+
+
+  def triangle_iniquality?
+    if (@base >= @hypotenuse + @height) || (@hypotenuse >= @base + @height) || (@height >= @base + @hypotenuse)
+      return true
+    else
+      return false
+    end
+  end
+
+  def valid?
+    if no_sides_or_negative_sides? || triangle_iniquality?
+      return true
+    else
+      return false
+    end
+  end
+
+  def kind
+    if valid?
+     begin
+       raise TriangleError
       end
     elsif @base == @height && @height == @hypotenuse
       return :equilateral
@@ -27,8 +50,8 @@ class Triangle
   end
 
   class TriangleError < StandardError
-    def message
-      "this is not a triangle"
-    end
+    # def message
+      # "this is not a triangle"
+    # end
   end
 end
